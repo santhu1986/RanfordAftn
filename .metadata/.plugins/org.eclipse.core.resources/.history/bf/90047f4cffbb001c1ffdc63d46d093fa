@@ -1,0 +1,54 @@
+package com.ebanking.master;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+
+public class Exepom 
+{
+    @Test
+	public void pom() throws InterruptedException 
+	{
+		WebDriver driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("http://122.175.8.158/ranford2");
+		
+		//Login
+		
+		RanfordHP RHP=PageFactory.initElements(driver,RanfordHP.class);
+		RHP.Login();
+		
+		Thread.sleep(3000);
+		//Role
+		
+		AdminHP AHP=PageFactory.initElements(driver,AdminHP.class);
+		AHP.Rol();
+		Thread.sleep(3000);
+		//New Role
+		
+		RoleDetails RD=PageFactory.initElements(driver,RoleDetails.class);
+		RD.Nrole();
+		Thread.sleep(3000);
+		//Role Creation
+		
+		Rolecreation RC=PageFactory.initElements(driver,Rolecreation.class);
+		RC.Rcre();
+		Thread.sleep(3000);
+		//Alert
+		
+		driver.switchTo().alert().accept();
+		Thread.sleep(3000);
+		//Home
+		
+		RD.Hom();
+		Thread.sleep(3000);
+		//Branch
+		
+		AHP.Br();
+		
+	}
+    
+    
+}
+	
